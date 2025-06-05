@@ -1,0 +1,153 @@
+
+
+<style>
+  .line_bronx:hover line {
+    stroke: darkred;
+    stroke-width: 4;
+  }
+</style>
+
+<style>
+  .line_brooklyn:hover line {
+    stroke: darkblue;
+    stroke-width: 4;
+  }
+</style>
+
+<style>
+  .line_manhattan:hover line {
+    stroke: darkgreen;
+    stroke-width: 4;
+  }
+</style>
+
+<style>
+  .line_queens:hover line {
+    stroke: grey;
+    stroke-width: 4;
+  }
+</style>
+
+<style>
+  .line_staten_island:hover line {
+    stroke: orange;
+    stroke-width: 4;
+  }
+</style>
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 520" width="500" height="500">
+
+<!-- key for lines -->
+<rect x="290" y="18" width="220" height="95" fill="white" stroke="black" stroke-width="1" rx="5" ry="5"/>
+<text x="395" y="30" text-anchor="middle" font-size="11" fill="black"> ━ staten island dog bite average </text>
+<text x="390" y="45" text-anchor="middle" font-size="11" fill="red"> ━ bronx dog bite average </text>
+<text x="390" y="60" text-anchor="middle" font-size="11" fill="blue"> ━ brooklyn dog bite average </text>
+<text x="405" y="75" text-anchor="middle" font-size="11" fill="purple"> ━ queens dog bite average </text>
+<text x="405" y="90" text-anchor="middle" font-size="11" fill="green"> ━ manhattan dog bite average </text>
+<text x="405" y="105" text-anchor="middle" font-size="11" fill="orange"> - - - overall NYC dog bite average </text>
+
+
+<g class="line_bronx"> 
+     {% for point in bronx_endpoints %}
+     <line
+          x1="{{ 60 + loop.index0 * 50 }}"
+          y1="{{ 410 - ((point[0] - 20) * (400 / 150)) }}"
+          x2="{{ 60 + (loop.index0 + 1) * 50 }}"
+          y2="{{ 410 - ((point[1] - 20) * (400 / 150)) }}"
+          stroke="red" stroke-width="2" />
+     {% endfor %}
+</g>
+
+<g class="line_brooklyn"> 
+     {% for point in brooklyn_endpoints %}
+     <line 
+          x1="{{60 + loop.index0 * 50}}"
+          y1="{{410 - ((point[0] - 20) * (400 / 150))}}"
+          x2="{{60 + (loop.index0 + 1) * 50}}"
+          y2="{{410 - ((point[1] - 20) * (400 / 150))}}"
+          stroke="blue" stroke-width="2" />
+     {% endfor %}
+</g>
+
+<g class="line_manhattan">
+     {% for point in manhattan_endpoints %}
+     <line 
+          x1="{{60 + loop.index0 * 50}}"
+          y1="{{410 - ((point[0] - 20) * (400 / 150))}}"
+          x2="{{60 + (loop.index0 + 1) * 50}}"
+          y2="{{410 - ((point[1] - 20) * (400 / 150))}}"
+          stroke="green" stroke-width="2" />
+     {% endfor %}
+</g>
+
+<g class="line_queens">
+     {% for point in queens_endpoints %}
+     <line  
+          x1="{{60 + loop.index0 * 50}}"
+          y1="{{410 - ((point[0] - 20) * (400 / 150))}}"
+          x2="{{60 + (loop.index0 + 1) * 50}}"
+          y2="{{410 - ((point[1] - 20) * (400 / 150))}}" 
+          stroke="purple" stroke-width="2" />
+     {% endfor %}
+</g>
+
+<g class="line_staten_island">
+     {% for point in staten_island_endpoints %}
+     <line  
+          x1="{{60 + loop.index0 * 50}}"
+          y1="{{410 - ((point[0] - 20) * (400 / 150))}}"
+          x2="{{60 + (loop.index0 + 1) * 50}}"
+          y2="{{410 - ((point[1] - 20) * (400 / 150))}}" 
+          stroke="black" stroke-width="2" />
+     {% endfor %}
+</g>
+
+<g class="line_universal">
+     {% for point in universal_endpoints %}
+     <line  
+          x1="{{60 + loop.index0 * 50}}"
+          y1="{{410 - ((point[0] - 20) * (400 / 150))}}"
+          x2="{{60 + (loop.index0 + 1) * 50}}"
+          y2="{{410 - ((point[1] - 20) * (400 / 150))}}" stroke-dasharray="5"
+          stroke="orange" stroke-width="2" />
+     {% endfor %}
+</g>
+
+<!-- title for graph -->
+
+<!-- y axis text label-->
+<text x="20" y="250" transform="rotate(-90, 20,250)" text-anchor="middle" font-size="15">
+  Dog Bites
+</text>
+
+<!--x axis text label-->
+<text x="262" y="500" text-anchor="middle" font-size="15">
+Year
+</text>
+
+
+<!-- axis -->
+<line class="axis" x1="30" y1="450" x2="510" y2="450" stroke="black"/>
+<line class="axis" x1="60" y1="20" x2="60" y2="450" stroke="black" />
+
+<!-- Year labels -->
+{% for year_label in years %}
+  {% if (year_label|float) % 2 == 0 %}
+     {% set x = 50 + loop.index0 * 50 %}
+    <!-- Tick mark on x adxis-->
+    <line x1="{{ x }}" x2="{{ x }}" y1="450" y2="455" stroke="black" />
+    <!-- Label for years themselves-->
+    <text class="label" x="{{ x }}" y="470" font-size="15" text-anchor="middle">{{ year_label }}</text>
+  
+   {% endif %}
+{% endfor %}
+
+  {% for val in range(20, 170, 20) %}
+  {% set y = 450 - ((val - 10) * (400 / 150)) %}
+  <!-- Tick marks y-->
+  <line x1="55" x2="60" y1="{{ y-20 }}" y2="{{ y-20 }}" stroke="black" />
+  <!-- Label -->
+  <text x="50" y="{{ y -15}}" font-size="15" text-anchor="end">{{ val }}</text>
+  
+{% endfor %}
+</svg>

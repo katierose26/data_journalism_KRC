@@ -1,0 +1,67 @@
+
+<html lang="en">
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Codystar:wght@300;400&family=Raleway:ital,wght@0,100..900;1,100..900&family=Space+Grotesk:wght@300..700&family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&display=swap" rel="stylesheet">
+    <meta charset="UTF-8" />
+    <title>Data Journalism - Katie Rose Christopher</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+  
+
+  
+  
+</head>
+{% include "navbar.html" %}
+<body>
+
+
+  <h1>Data Journalism - Katie Rose Christopher</h1>
+  Female Dog Bites in the 5 Boroughs of NYC (2015-2023)
+
+  <div id="line_graph_all"> 
+    {%include 'line_graph.svg'%}
+    
+  </div>
+  <div>
+    <form action="/micro" method="GET">
+      <label for="year_select">Choose a year:</label><br>
+      <select name="year" id="year_select">
+
+      </select>
+      <script>
+      const select = document.getElementById("year_select");
+      for (let year = 2015; year <= 2023; year++) {
+        const option = document.createElement("option");
+        option.value = year;
+        option.text = year;
+        select.appendChild(option);
+      }
+      </script>
+      <input type="submit" value="Submit">
+    </form>
+
+   </div>
+
+   <div class=""data-display">
+    <p> The line chart "Female Dog Bites in the 5 Boroughs of NYC(2015-2023)" displays annual data for each borough-Bronx, Brooklyn, Manhattan, Queens, and Staten Island. Each line represents the average dog bites by female dogs reported in said borough across the years of 2015-2023.</p>
+    <p>Observations</p>
+    <p>   -Brooklyn (blue line) and Manhattan (green line) consistently have the highest numbers of female dog bites across all boroughs. I predict that this is likely due to their much higher populations, meaning more people have dogs, which means there would be more dogs to bite people in that area. </p>
+    <p>   -Staten Island (black line) consistently reports the lowest numbers of female dog bites, shwoing a significant downward trend between 2018 and 2021. The reason for the consistently small about of dog bites in this area is likely the opposite of why there are so many in manhattan and brooklyn, staten island has a much lower population, meaning likely less dogs.  </p>
+    <p>   -All boroughs show a noticible dip in number of female dog bites around 2020-2021, likely in correlation to the COVID pandemic.  </p>
+    <p>   -A possible reason that Manhattan (green line) and Brooklyn (blue line) have higher levels of reported dog bites is due to the tendancy of said boroughs residents to report such issues. It is more likely that wealthier areas would have more people prone to reporting dog bites, and those dog bites would be recorded properly due to more resources and area attention.   </p>
+  </div>
+
+
+
+  {% include "footer.html" %}
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+  
+
+</body>
+
+</html>

@@ -1,0 +1,88 @@
+<html>
+<head>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Codystar:wght@300;400&family=Raleway:ital,wght@0,100..900;1,100..900&family=Space+Grotesk:wght@300..700&family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&display=swap" rel="stylesheet">
+  <title>Life Expectancy in North America - {{ year }}</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+  {% include "navbar.html" %}
+<body>
+
+  <h1>Female Dog Bites in NYC - {{ year }}</h1>
+    {% include 'NYC_boroughs.svg' %}
+  </div>
+  <svg width="480">
+    <rect x="10" y="10" width="40" height="80" fill="hsl(300,90%,100%)" stroke="none" stroke-width="2" />
+    <rect x="50" y="10" width="40" height="80" fill="hsl(300,90%,92%)" stroke="none" stroke-width="2" />
+    <rect x="90" y="10" width="40" height="80" fill="hsl(300,90%,82%)" stroke="none" stroke-width="2" />
+    <rect x="130" y="10" width="40" height="80" fill="hsl(300,90%,72%)" stroke="none" stroke-width="2" />
+    <rect x="170" y="10" width="40" height="80" fill="hsl(300,90%,62%)" stroke="none" stroke-width="2" />
+    <rect x="210" y="10" width="40" height="80" fill="hsl(300,90%,42%)" stroke="none" stroke-width="2" />
+    <rect x="250" y="10" width="40" height="80" fill="hsl(300,90%,32%)" stroke="none" stroke-width="2" />
+    <rect x="290" y="10" width="40" height="80" fill="hsl(300,90%,22%)" stroke="none" stroke-width="2" />
+    <rect x="330" y="10" width="40" height="80" fill="hsl(300,90%,12%)" stroke="none" stroke-width="2" />
+    <rect x="370" y="10" width="40" height="80" fill="hsl(300,90%,7%)" stroke="none" stroke-width="2" />
+    <rect x="410" y="10" width="40" height="80" fill="hsl(300,90%,0%)" stroke="none" stroke-width="2" />
+    <text  x="25" y="100" text-anchor="middle" font-size="11" fill="black">10</text>
+    <text  x="65" y="100" text-anchor="middle" font-size="11" fill="black">25</text>
+    <text  x="105" y="100" text-anchor="middle" font-size="11" fill="black">40</text>
+    <text  x="145" y="100" text-anchor="middle" font-size="11" fill="black">55</text>
+    <text  x="185" y="100" text-anchor="middle" font-size="11" fill="black">70</text>
+    <text  x="225" y="100" text-anchor="middle" font-size="11" fill="black">85</text>
+    <text  x="265" y="100" text-anchor="middle" font-size="11" fill="black">100</text>
+    <text  x="305" y="100" text-anchor="middle" font-size="11" fill="black">115</text>
+    <text  x="345" y="100" text-anchor="middle" font-size="11" fill="black">130</text>
+    <text  x="385" y="100" text-anchor="middle" font-size="11" fill="black">145</text>
+    <text  x="425" y="100" text-anchor="middle" font-size="11" fill="black">160</text>
+    <text  x="197.5" y="130" text-anchor="middle" font-size="15" fill="black">number of dog bites</text>
+  </svg>
+
+  <script>
+  
+    
+    var bronx=document.getElementsByClassName("Bronx")
+    var brooklyn=document.getElementsByClassName("Brooklyn")
+    var manhattan=document.getElementsByClassName("Manhattan")
+    var queens=document.getElementsByClassName("Queens")
+    var staten_island=document.getElementsByClassName("Staten_Island")
+
+
+    
+
+    for (var i=0;i<bronx.length; i++){
+      bronx[i].style.fill = "hsl(300,90%,{{ 100 - ((bx_value - 10) / 150 * 100) }}%)"
+    }
+    for (var i=0; i<brooklyn.length; i++){
+      brooklyn[i].style.fill = "hsl(300,90%,{{ 100 - ((bk_value - 10) / 150 * 100) }}%)"
+    }
+    for (var i=0; i<manhattan.length; i++){
+      manhattan[i].style.fill = "hsl(300,90%,{{ 100 - ((m_value - 10) / 150 * 100) }}%)"
+    }
+    for (var i = 0; i < queens.length; i++) {
+      queens[i].style.fill = "hsl(300,90%,{{ 100 - ((q_value - 10) / 150 * 100) }}%)"
+    }
+    
+    for (var i=0; i<staten_island.length; i++){
+      staten_island[i].style.fill = "hsl(300,90%,{{ 100 - ((si_value - 10) / 150 * 100) }}%)";
+    }
+  </script>
+
+
+  
+
+  <div class=""data-display">
+    <p> In {{year}}, the average amount of female dog bites in the Bronx was {{bx_value}} ({{delta_bx}} away from the average), in Brooklyn it was {{bk_value}} ({{delta_bk}} away from the average), in Manhattan it was {{ m_value}} ({{delta_m}} away from the average), in Queens it was {{q_value}} ({{delta_q}} away from the average), and in Staten Island it was {{si_value}} ({{delta_si}} away from the average).</p>
+    <p>This map compares the amount of female dog bites across the five boroughs of Manhattan, containing the Bronx, Brooklyn, Manhattan, Queens, and Staten Island. The darker the shade of purple on the map, the more dog bites in the according area. The darkest shade corelates to about 160 dog bites per year, while the lightest correlates to about 10. </p>
+  </div>
+
+  
+
+  {% include "footer.html" %}
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

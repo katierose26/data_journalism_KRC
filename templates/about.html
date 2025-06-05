@@ -1,0 +1,41 @@
+<html>
+<head>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Codystar:wght@300;400&family=Raleway:ital,wght@0,100..900;1,100..900&family=Space+Grotesk:wght@300..700&family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
+  <title>Female Dog Bites in NYC</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+  
+
+</head>
+<body>
+  {% include 'navbar.html' %}
+  <h1>Female Dog Bites in NYC - Katie Rose Christopher</h1>
+  <h2> This research project on female dog bite data in New York City dives into the amount and location of female dog bites in the five boroughs of NYC. The data was collected through online reports, mail, fax or by phone, and includes location and date of bite. This information is generally used by the New York City Health Departement and corresponds to section 11.03 of the NYC Health Code that requires all animal bites to be reported within 24 hours of the event. This data is not only helpful to New York City's safety and Health Departement, it is interesting as a general point of research as it reveals trends in dog bites.  </h2>
+  <h5> Below are the prototypes which I created to brainstorm, structure, and create this project.</h5>
+  <img src="{{ url_for('static', filename='prototype 1.png') }}" alt="Website prototype" style="transform: rotate(270deg) translateY(200px); width:300px"">
+  <img src="{{ url_for('static', filename='prototype 2.png') }}" alt="Website prototype" style="transform: rotate(270deg) translateY(400px); width:300px"">
+  
+  <p style="margin-left: 250px; margin-right:50px;" > Prototype 1 </p>
+  <p style="margin-left: 800px; margin-right:50px;" > Prototype 2 </p>
+
+  <p style="margin-left: 50px; margin-right:50px;" >I recieved feedback on prototype 1 from 3 different people, each with varying opinions that allowed me to optimize my design and data readability. My first two reviewers agreed on many fronts, most notably commenting that my map colors should not be blue as the water around it is blue, therefore making the distinction between the two difficult. I took this into account and in my second prototype changed the colors to purple/pink. My third reviewer advised that for my navbar, instead of naming a page 'macro', I should make it more clear, something like stats or graph; something I also took into account for prototype 2. After these chnages as well as a few others written on my prototype 1 image, I created a second prototype and additionally had it reviewed. The feedback this time was even more positive, with the general consensus being that my prototype improved, that my map was well designed, and my layout more navigatable. The one comment was that I could improve the aesthetics of my about page which I did for my final project.  </p>
+  
+  <video controls width="800" height="600">
+    <source src="{{ url_for('static', filename='0604.mp4') }}" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+
+  Overview Video
+  
+
+
+
+
+
+
+  {% include "footer.html" %}
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous"></script>
+</body>
+</html>
